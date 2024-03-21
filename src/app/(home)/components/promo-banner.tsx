@@ -5,7 +5,7 @@ const PromoBanner = ({ alt, ...props }: ImageProps) => {
     <Image
       height={0}
       width={0}
-      className="mt-8 h-auto w-full"
+      className="h-auto w-full"
       sizes="100vw"
       alt={alt}
       {...props}
