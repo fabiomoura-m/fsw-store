@@ -2,13 +2,19 @@
 const nextConfig = {
   images: {
     remotePatterns: [
-        {
-            protocol: 'https',
-            hostname: 'i.ibb.co',
-            port: '',
-            pathname: '**'
-        }
-    ]
+      {
+        protocol: "https",
+        hostname: "i.ibb.co",
+        port: "",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "fsw-store.s3.sa-east-1.amazonaws.com",
+        port: "",
+        pathname: "**",
+      },
+    ],
   },
 };
 
