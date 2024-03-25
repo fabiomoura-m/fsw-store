@@ -13,7 +13,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
       <div className=" flex flex-col gap-4">
         <div className="relative flex h-[170px] w-full items-center justify-center rounded-lg bg-accent">
           <Image
-            src="https://i.ibb.co/2PWV5Wz/01-mx-master-3s.png"
+            src={product.imageUrls[0]}
             width={0}
             height={0}
             alt={product.name}
