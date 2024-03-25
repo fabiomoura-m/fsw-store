@@ -1,10 +1,9 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import DiscountBadge from "@/components/ui/discount-badge";
 import { ProductWithTotalPrice, priceToRealMoney } from "@/helpers/products";
 import {
-  ArrowDownIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
   TruckIcon,
@@ -37,9 +36,7 @@ const ProductInfo = ({
       <div className="flex items-center gap-2">
         <h1 className="text-xl font-bold">{priceToRealMoney(totalPrice)}</h1>
         {discountPercentage > 0 && (
-          <Badge className="px-2 py-[2px]">
-            <ArrowDownIcon size={14} /> {discountPercentage}%{" "}
-          </Badge>
+          <DiscountBadge>{discountPercentage}</DiscountBadge>
         )}
       </div>
       {discountPercentage > 0 && (
@@ -79,7 +76,7 @@ const ProductInfo = ({
         Adicionar ao carrinho
       </Button>
 
-      <div className="mt-5 flex items-center justify-between bg-accent px-5 py-2 rounded-lg">
+      <div className="mt-5 flex items-center justify-between rounded-lg bg-accent px-5 py-2">
         <div className="flex items-center gap-3">
           <TruckIcon />
           <div className="flex flex-col">
