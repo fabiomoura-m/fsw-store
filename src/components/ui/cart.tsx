@@ -3,7 +3,6 @@ import { Badge } from "./badge";
 import { useContext } from "react";
 import { CartContext } from "@/providers/cart";
 import CartItem from "./cart-item";
-import { computeProductTotalPrice } from "@/helpers/products";
 
 const Cart = () => {
   const { products } = useContext(CartContext);
@@ -14,7 +13,7 @@ const Cart = () => {
         variant="outline"
       >
         <ShoppingCartIcon size={16} />
-        Catálogo
+        Carrinho
       </Badge>
 
       <div className="flex flex-col gap-5">
