@@ -15,6 +15,7 @@ interface ICartContext {
   addProductToCart: (product: CartProdut) => void;
   decreaseProductQuantity: (productId: string) => void;
   increaseProductQuantity: (productId: string) => void;
+  removeProductFromCart: (productId: string) => void;
 }
 
 export const CartContext = createContext<ICartContext>({
@@ -24,7 +25,8 @@ export const CartContext = createContext<ICartContext>({
   cartTotalDiscount: 0,
   addProductToCart: () => {},
   decreaseProductQuantity: () => {},
-  increaseProductQuantity: () => {}
+  increaseProductQuantity: () => {},
+  removeProductFromCart: () => {},
 });
 
 const CartContextProvider = ({ children }: { children: ReactNode }) => {
@@ -61,15 +63,17 @@ const CartContextProvider = ({ children }: { children: ReactNode }) => {
     // se a quantidade for 1, remova o produto do carrinho
     // se não, diminua a quantidade no carrinho
     setProducts((prev) =>
-      prev.map((cartProduct) => {
-        if (cartProduct.id === productID) {
-          return {
-            ...cartProduct,
-            quantity: cartProduct.quantity - 1,
-          };
-        }
-        return cartProduct;
-      }).filter(cartProduct => cartProduct.quantity > 0 )
+      prev
+        .map((cartProduct) => {
+          if (cartProduct.id === productID) {
+            return {
+              ...cartProduct,
+              quantity: cartProduct.quantity - 1,
+            };
+          }
+          return cartProduct;
+        })
+        .filter((cartProduct) => cartProduct.quantity > 0),
     );
   };
 
@@ -83,7 +87,13 @@ const CartContextProvider = ({ children }: { children: ReactNode }) => {
           };
         }
         return cartProduct;
-      })
+      }),
+    );
+  };
+
+  const removeProductFromCart = (productId: string) => {
+    setProducts((prev) =>
+      prev.filter((cartProduct) => cartProduct.id !== productId),
     );
   };
 
@@ -94,6 +104,7 @@ const CartContextProvider = ({ children }: { children: ReactNode }) => {
         addProductToCart,
         decreaseProductQuantity,
         increaseProductQuantity,
+        removeProductFromCart,
         cartTotalPrice: 0,
         cartBasePrice: 0,
         cartTotalDiscount: 0,
