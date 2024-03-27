@@ -1,7 +1,7 @@
 "use client";
 
 import { ProductWithTotalPrice } from "@/helpers/products";
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useMemo, useState } from "react";
 
 export interface CartProdut extends ProductWithTotalPrice {
   quantity: number;
@@ -12,6 +12,9 @@ interface ICartContext {
   cartTotalPrice: number;
   cartBasePrice: number;
   cartTotalDiscount: number;
+  total: number;
+  subTotal: number;
+  totalDiscount: number;
   addProductToCart: (product: CartProdut) => void;
   decreaseProductQuantity: (productId: string) => void;
   increaseProductQuantity: (productId: string) => void;
@@ -23,6 +26,9 @@ export const CartContext = createContext<ICartContext>({
   cartTotalPrice: 0,
   cartBasePrice: 0,
   cartTotalDiscount: 0,
+  total: 0,
+  subTotal: 0,
+  totalDiscount: 0,
   addProductToCart: () => {},
   decreaseProductQuantity: () => {},
   increaseProductQuantity: () => {},
@@ -31,6 +37,22 @@ export const CartContext = createContext<ICartContext>({
 
 const CartContextProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<CartProdut[]>([]);
+
+  // Total sem descontos
+  const subTotal = useMemo(() => {
+    return products.reduce((acc, product) => {
+      return acc + Number(product.basePrice);
+    }, 0);
+  }, [products]);
+
+  // Total com descontos
+  const total = useMemo(() => {
+    return products.reduce((acc, product) => {
+      return acc + product.totalPrice;
+    }, 0);
+  }, [products]);
+
+  const totalDiscount = subTotal - total;
 
   const addProductToCart = (product: CartProdut) => {
     // se o produto já estiver no carrinho, apenas aumente a sua quantidade
@@ -105,6 +127,9 @@ const CartContextProvider = ({ children }: { children: ReactNode }) => {
         decreaseProductQuantity,
         increaseProductQuantity,
         removeProductFromCart,
+        total,
+        subTotal,
+        totalDiscount,
         cartTotalPrice: 0,
         cartBasePrice: 0,
         cartTotalDiscount: 0,
