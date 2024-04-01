@@ -126,10 +126,8 @@ const Header = () => {
             <ShoppingCartIcon />
           </Button>
         </SheetTrigger>
-        <SheetContent>
-          <SheetHeader>
-            <Cart/>
-          </SheetHeader>
+        <SheetContent>  
+            <Cart/>    
         </SheetContent>
       </Sheet>
     </Card>
