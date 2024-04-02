@@ -48,35 +48,37 @@ const Cart = () => {
         </ScrollArea>
       </div>
 
-      <div className="flex flex-col gap-3">
-        <Separator />
-        <div className="flex items-center justify-between text-xs">
-          <p>Subtotal</p>
-          <p>{priceToRealMoney(subTotal)}</p>
-        </div>
-        <Separator />
-        <div className="flex items-center justify-between text-xs">
-          <p>Entrega</p>
-          <p className="uppercase">Grátis</p>
-        </div>
-        <Separator />
-        <div className="flex items-center justify-between text-xs">
-          <p>Descontos</p>
-          <p>- {priceToRealMoney(totalDiscount)}</p>
-        </div>
-        <Separator />
-        <div className="flex items-center justify-between text-sm font-bold">
-          <p>Total</p>
-          <p>{priceToRealMoney(total)}</p>
-        </div>
+      {products.length > 0 && (
+        <div className="flex flex-col gap-3">
+          <Separator />
+          <div className="flex items-center justify-between text-xs">
+            <p>Subtotal</p>
+            <p>{priceToRealMoney(subTotal)}</p>
+          </div>
+          <Separator />
+          <div className="flex items-center justify-between text-xs">
+            <p>Entrega</p>
+            <p className="uppercase">Grátis</p>
+          </div>
+          <Separator />
+          <div className="flex items-center justify-between text-xs">
+            <p>Descontos</p>
+            <p>- {priceToRealMoney(totalDiscount)}</p>
+          </div>
+          <Separator />
+          <div className="flex items-center justify-between text-sm font-bold">
+            <p>Total</p>
+            <p>{priceToRealMoney(total)}</p>
+          </div>
 
-        <Button
-          className="mt-5 font-semibold uppercase"
-          onClick={handleFinishPurchaseClick}
-        >
-          Finalizar compra
-        </Button>
-      </div>
+          <Button
+            className="mt-5 font-semibold uppercase"
+            onClick={handleFinishPurchaseClick}
+          >
+            Finalizar compra
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
