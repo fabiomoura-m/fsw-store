@@ -52,7 +52,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
         <AccordionItem value={order.id}>
           <AccordionTrigger>
             <div className="flex flex-col gap-1 text-left">
-                <p>Pedido com {order.orderProducts.length} produto(s)</p>
+                <p className="uppercase font-bold text-sm">Pedido com {order.orderProducts.length} produto(s)</p>
                 <p className="opacity-60 text-sm">Feito em {format(order.createdAt, "dd/MM/yy 'às' HH:mm")}</p>
             </div>
           </AccordionTrigger>
