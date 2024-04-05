@@ -61,13 +61,13 @@ export default async function Home() {
           <PromoBanner
             src="/banner-home-02.png"
             alt="Até 55% de desconto em mouses!"
-            className="lg:w-0 flex-1"
+            className="flex-1 lg:w-0"
           />
 
           <PromoBanner
             src="/banner-home-03.png"
             alt="Até 55% de desconto em fones!"
-            className="hidden lg:w-0 flex-1 lg:block"
+            className="hidden flex-1 lg:block lg:w-0"
           />
         </div>
 
@@ -80,6 +80,12 @@ export default async function Home() {
           src="/banner-home-03.png"
           alt="Até 20% de desconto em fones."
           className="lg:hidden"
+        />
+
+        <PromoBanner
+          src="/free-shipping-banner.png"
+          alt="Até 55% de desconto em mouses!"
+          className="hidden lg:block"
         />
 
         <div className="flex flex-col gap-3 lg:gap-5">
