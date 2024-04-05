@@ -52,7 +52,7 @@ export default async function Home() {
           <Categories />
         </div>
 
-        <div>
+        <div className="flex flex-col gap-3 lg:gap-5">
           <SectionTitle>Ofertas</SectionTitle>
           <ProductList products={deals} />
         </div>
@@ -62,7 +62,7 @@ export default async function Home() {
           alt="Até 55% de desconto em mouses."
         />
 
-        <div>
+        <div className="flex flex-col gap-3 lg:gap-5">
           <SectionTitle>Teclados</SectionTitle>
           <ProductList products={keyboards} />
         </div>
@@ -72,7 +72,7 @@ export default async function Home() {
           alt="Até 20% de desconto em fones."
         />
 
-        <div>
+        <div className="flex flex-col gap-3 lg:gap-5">
           <SectionTitle>Mouses</SectionTitle>
           <ProductList products={mouses} />
         </div>
