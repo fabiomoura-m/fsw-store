@@ -34,10 +34,10 @@ const ProductItem = ({ product }: ProductItemProps) => {
           <div className="flex items-center gap-1">
             {product.discountPercentage > 0 ? (
               <>
-                <p className="font-semibold">
+                <p className="font-semibold lg:text-lg">
                   {priceToRealMoney(product.totalPrice)}
                 </p>
-                <p className="overflow-hidden text-ellipsis whitespace-nowrap text-xs line-through opacity-75">
+                <p className="overflow-hidden text-ellipsis whitespace-nowrap text-xs line-through opacity-75 lg:text-sm">
                   {priceToRealMoney(Number(product.basePrice))}
                 </p>
               </>
