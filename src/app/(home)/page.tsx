@@ -42,13 +42,13 @@ export default async function Home() {
           alt="Até 55% de desconto esse mês!"
         />
       </div>
-      <div className="container mx-auto flex flex-col gap-8 py-8">
+      <div className="container mx-auto flex flex-col gap-8 py-8 lg:gap-10">
         <PromoBanner
           src="/banner-home-01.png"
           alt="Até 55% de desconto esse mês."
           className="lg:hidden"
         />
-        <div>
+        <div className="lg:mt-2">
           <Categories />
         </div>
 
