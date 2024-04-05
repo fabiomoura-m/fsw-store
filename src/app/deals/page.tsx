@@ -13,13 +13,13 @@ const DealsPage = async () => {
     },
   });
   return (
-    <div className="flex flex-col gap-8 px-5 pb-14 pt-8">
+    <div className="lg:container mx-auto flex flex-col gap-8 px-5 py-8">
       <Badge variant="heading">
         <PercentIcon size={16} />
         Ofertas
       </Badge>
 
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-2 lg:grid-cols-6 gap-8">
         {deals.map((product) => (
           <ProductItem
             key={product.id}
