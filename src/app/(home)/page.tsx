@@ -45,7 +45,7 @@ export default async function Home() {
           />
         </Link>
       </div>
-      <div className="container mx-auto flex flex-col gap-8 py-8 lg:gap-10">
+      <div className="lg:container px-5 flex flex-col gap-8 py-8 lg:pt-0 lg:gap-10">
         <Link href="/deals">
           <PromoBanner
             src="/banner-home-01.png"
@@ -84,18 +84,16 @@ export default async function Home() {
           <ProductList products={keyboards} />
         </div>
 
-        <Link href="/category/headphones" className="flex flex-1">
+        <Link href="/category/headphones" className="lg:hidden flex flex-1">
           <PromoBanner
             src="/banner-home-03.png"
             alt="Até 20% de desconto em fones."
-            className="lg:hidden"
           />
         </Link>
-        <Link href="/catalog">
+        <Link href="/catalog" className="hidden lg:block">
           <PromoBanner
             src="/free-shipping-banner.png"
             alt="Frete grátis para todo o brasil"
-            className="hidden lg:block"
           />
         </Link>
 

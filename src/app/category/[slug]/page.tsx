@@ -19,13 +19,13 @@ const CategoryProduct = async ({ params }: any) => {
   }
 
   return (
-    <div className="container mx-auto flex flex-col gap-8 py-8 lg:gap-10 lg:py-10">
+    <div className="lg:container mx-auto px-5 flex flex-col gap-8 py-8 lg:gap-10 lg:py-10">
       <Badge variant="heading">
         {CATEGORY_ICON[params.slug as keyof typeof CATEGORY_ICON]}
         {category.name}
       </Badge>
 
-      <div className="grid grid-cols-2 gap-8 lg:grid-cols-6">
+      <div className="grid grid-cols-2 gap-x-4 gap-y-8 lg:gap-8 lg:grid-cols-6">
         {category.products.map((product) => (
           <ProductItem
             product={computeProductTotalPrice(product)}
