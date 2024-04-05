@@ -17,13 +17,13 @@ const Cart = () => {
   const { products, subTotal, total, totalDiscount } = useContext(CartContext);
 
   const handleFinishPurchaseClick = async () => {
-    if(!data?.user){
+    if (!data?.user) {
       // TODO: redirecionar para o login
-      return 
+      return;
     }
 
-    const order = await createOrder(products, (data?.user as any).id)
-   
+    const order = await createOrder(products, (data?.user as any).id);
+
     const checkout = await createCheckout(products, order.id);
 
     const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
@@ -34,10 +34,7 @@ const Cart = () => {
   };
   return (
     <div className="flex h-full flex-col gap-8">
-      <Badge
-        className="w-fit gap-1 border-2 border-primary px-3 py-[0.375rem] text-base uppercase"
-        variant="outline"
-      >
+      <Badge variant="heading">
         <ShoppingCartIcon size={16} />
         Carrinho
       </Badge>
