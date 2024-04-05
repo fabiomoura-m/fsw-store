@@ -1,7 +1,7 @@
 "use client";
 
 import { ProductWithTotalPrice } from "@/helpers/products";
-import { ReactNode, createContext, useEffect, useMemo, useState } from "react";
+import { ReactNode, createContext, useEffect, useMemo, useRef, useState } from "react";
 
 export interface CartProdut extends ProductWithTotalPrice {
   quantity: number;
@@ -36,13 +36,26 @@ export const CartContext = createContext<ICartContext>({
 });
 
 const CartContextProvider = ({ children }: { children: ReactNode }) => {
-  const [products, setProducts] = useState<CartProdut[]>(() => {
-    const productsOnLocalStorage = typeof window !== "undefined" && localStorage.getItem("@fsw-store/cart-products")
-    return JSON.parse(productsOnLocalStorage || "[]");
-  });
+  const initialRender = useRef(true);
+  const LOCAL_STORAGE_KEY = "@fsw-store/cart-products";
+
+  const [products, setProducts] = useState<CartProdut[]>([]);
 
   useEffect(() => {
-    localStorage.setItem("@fsw-store/cart-products", JSON.stringify(products));
+    if (JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) as string)) {
+      const storedCartItems = JSON.parse(
+        localStorage.getItem(LOCAL_STORAGE_KEY) as string,
+      );
+      setProducts([...products, ...storedCartItems]);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (initialRender.current) {
+      initialRender.current = false;
+      return;
+    }
+    window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(products));
   }, [products]);
 
   // Total sem descontos
