@@ -3,6 +3,7 @@ import { prismaClient } from "@/lib/prisma";
 import ProductList from "../../components/ui/product-list";
 import SectionTitle from "../../components/ui/section-title";
 import PromoBanner from "./components/promo-banner";
+import Image from "next/image";
 
 export default async function Home() {
   const deals = await prismaClient.product.findMany({
@@ -30,12 +31,23 @@ export default async function Home() {
   });
 
   return (
-      <div className="flex flex-col gap-8 pt-8 pb-14 px-5">
+    <>
+      <div className="mx-auto max-w-[1920px]">
+        <Image
+          src="/deals-banner.png"
+          className="hidden h-auto w-full lg:block"
+          width={0}
+          height={0}
+          sizes="100vw"
+          alt="Até 55% de desconto esse mês!"
+        />
+      </div>
+      <div className="container mx-auto flex flex-col gap-8 py-8">
         <PromoBanner
           src="/banner-home-01.png"
           alt="Até 55% de desconto esse mês."
+          className="lg:hidden"
         />
-
         <div>
           <Categories />
         </div>
@@ -65,5 +77,6 @@ export default async function Home() {
           <ProductList products={mouses} />
         </div>
       </div>
+    </>
   );
 }
