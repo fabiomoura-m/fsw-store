@@ -58,22 +58,22 @@ const Cart = () => {
       {products.length > 0 && (
         <div className="flex flex-col gap-3">
           <Separator />
-          <div className="flex items-center justify-between text-xs">
+          <div className="flex items-center justify-between text-xs lg:text-sm">
             <p>Subtotal</p>
             <p>{priceToRealMoney(subTotal)}</p>
           </div>
           <Separator />
-          <div className="flex items-center justify-between text-xs">
+          <div className="flex items-center justify-between text-xs lg:text-sm">
             <p>Entrega</p>
             <p className="uppercase">Grátis</p>
           </div>
           <Separator />
-          <div className="flex items-center justify-between text-xs">
+          <div className="flex items-center justify-between text-xs lg:text-sm">
             <p>Descontos</p>
             <p>- {priceToRealMoney(totalDiscount)}</p>
           </div>
           <Separator />
-          <div className="flex items-center justify-between text-sm font-bold">
+          <div className="flex items-center justify-between text-sm lg:text-base font-bold">
             <p>Total</p>
             <p>{priceToRealMoney(total)}</p>
           </div>

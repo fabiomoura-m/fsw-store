@@ -32,7 +32,7 @@ const CartItem = ({ product }: CartItemProps) => {
     <div className="flex items-center justify-between">
       <div className=" flex items-center gap-4">
         {/* PARTE DIREITA (FOTO E NOME) */}
-        <div className="flex h-[77px] w-[77px] items-center justify-center rounded-lg bg-accent">
+        <div className="flex h-[77px] w-[77px] items-center justify-center rounded-lg bg-accent lg:h-[120px] lg:w-[120px]">
           <Image
             src={product.imageUrls[0]}
             width={0}
@@ -42,37 +42,37 @@ const CartItem = ({ product }: CartItemProps) => {
             className="h-auto max-h-[70%] w-auto max-w-[80%]"
           />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-1 lg:gap-2">
           <p className="text-sm">{product.name}</p>
           <div className="flex items-center gap-2">
-            <p className="text-sm font-bold">
+            <p className="text-sm font-bold lg:text-base">
               {priceToRealMoney(product.totalPrice)}
             </p>
             {product.discountPercentage > 0 && (
-              <p className="text-xs  line-through opacity-75">
+              <p className="text-xs  line-through opacity-75 lg:text-sm">
                 {priceToRealMoney(Number(product.basePrice))}
               </p>
             )}
           </div>
-          <div className="mt-1 flex items-center gap-2">
+          <div className="mt-1 flex items-center gap-2 lg:gap-3">
             <Button
               size="icon"
               variant="outline"
-              className="h-8 w-8"
+              className="h-8 w-8 lg:h-9 lg:w-9"
               onClick={handleDecreaseProductQuantityClick}
             >
-              <ArrowLeftIcon size={16} />
+              <ArrowLeftIcon className="h-4 w-4 lg:h-5 lg:w-5" />
             </Button>
 
-            <span className="text-xs">{product.quantity}</span>
+            <span className="text-xs lg:text-sm">{product.quantity}</span>
 
             <Button
               size="icon"
               variant="outline"
-              className="h-8 w-8"
+              className="h-8 w-8 lg:h-9 lg:w-9"
               onClick={handleIncreaseProductQuantityClick}
             >
-              <ArrowRightIcon size={16} />
+              <ArrowRightIcon className="h-4 w-4 lg:h-5 lg:w-5" />
             </Button>
           </div>
         </div>
@@ -80,10 +80,10 @@ const CartItem = ({ product }: CartItemProps) => {
       <Button
         size="icon"
         variant="outline"
-        className="h-8 w-8"
+        className="h-8 w-8 lg:h-9 lg:w-9"
         onClick={handleRemoveProductClick}
       >
-        <TrashIcon size={14} />
+        <TrashIcon className="h-4 w-4 lg:h-5 lg:w-5" />
       </Button>
     </div>
   );
