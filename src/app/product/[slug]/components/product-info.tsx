@@ -6,6 +6,7 @@ import { ProductWithTotalPrice, priceToRealMoney } from "@/helpers/products";
 import { CartContext } from "@/providers/cart";
 import { ArrowLeftIcon, ArrowRightIcon, TruckIcon } from "lucide-react";
 import { useContext, useState } from "react";
+import { toast } from "react-toastify";
 
 interface ProductInfoProps {
   product: ProductWithTotalPrice;
@@ -25,6 +26,13 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
 
   const handleAddToCartClick = () => {
     addProductToCart({ ...product, quantity });
+
+    toast.success("Adicionado ao carrinho com sucesso!", {
+      position: "top-right",
+      autoClose: 1500,
+      theme: "dark",
+      pauseOnHover: false,
+    });
   };
 
   return (
