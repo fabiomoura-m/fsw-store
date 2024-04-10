@@ -32,7 +32,7 @@ async function OrderPage() {
   });
 
   return (
-    <div className="flex flex-col gap-8 px-5 pb-14 pt-8">
+    <div className=" mx-auto flex flex-col gap-8 px-5 py-8 lg:container lg:mx-auto lg:py-10">
       <Badge variant="heading">
         <PackageSearchIcon size={16} />
         Meus Pedidos
